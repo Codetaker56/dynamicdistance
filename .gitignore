@@ -25,3 +25,6 @@ Thumbs.db
 
 # NOTE: gradle/wrapper/gradle-wrapper.jar is intentionally committed -
 # the wrapper is required to build without a global Gradle install.
+
+# local Modrinth paste-sheet, not part of the repo
+MODRINTH.md
