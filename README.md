@@ -146,7 +146,7 @@ cd ../fabric-26.x
 JAVA_HOME=/path/to/jdk-25 ./gradlew build
 ```
 
-Jars land in `build/libs/dynamicdistance-1.0.0.jar` for each project. `build` also runs the
+Jars land in `build/libs/dynamicdistance-<version>.jar` for each project. `build` also runs the
 unit tests.
 
 ### Tests

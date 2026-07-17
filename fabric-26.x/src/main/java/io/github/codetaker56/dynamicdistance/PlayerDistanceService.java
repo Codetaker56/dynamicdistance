@@ -56,10 +56,11 @@ public final class PlayerDistanceService {
 
     // ---- called by mixins (hot path: keep cheap) ----
 
-    /** Effective per-player view/chunk-send distance. */
+    /** Effective per-player view/chunk-send distance. When disabled, reports vanilla's own clamp. */
     public int effectiveView(ServerPlayer player, int serverMax) {
         DistanceConfig cfg = DynamicDistance.config();
         int requested = player.requestedViewDistance();
+        if (!cfg.enabled) return Math.max(DistanceCalculator.ENGINE_MIN, Math.min(requested, serverMax));
         int override = cfg.allowPerPlayerOverrides ? viewOverride(player.getUUID()) : DistanceCalculator.NO_OVERRIDE;
         return DistanceCalculator.effectiveView(requested, serverMax, override, cfg);
     }
@@ -206,9 +207,10 @@ public final class PlayerDistanceService {
 
     // ---- helpers ----
 
-    /** Current effective simulation distance for display (not necessarily applied yet). */
+    /** Current effective simulation distance for display. When disabled, reports the server's vanilla global value. */
     public int computeSimulation(ServerPlayer player) {
         DistanceConfig cfg = DynamicDistance.config();
+        if (!cfg.enabled) return player.level().getServer().getPlayerList().getSimulationDistance();
         int view = effectiveView(player, controller(player).dynamicdistance$serverViewDistance());
         int simOverride = cfg.allowPerPlayerOverrides ? simOverride(player.getUUID()) : DistanceCalculator.NO_OVERRIDE;
         return DistanceCalculator.effectiveSimulation(view, simOverride, cfg);

@@ -80,7 +80,7 @@ public final class DynamicDistanceCommand {
                         + (sOver != DistanceCalculator.NO_OVERRIDE ? "sim=" + sOver : "");
 
         String msg = "DynamicDistance — " + player.getName().getString() + "\n"
-                + "  enabled            : " + cfg.enabled + "\n"
+                + "  enabled            : " + cfg.enabled + (cfg.enabled ? "" : "  (disabled — values below are vanilla)") + "\n"
                 + "  client requested   : " + requested + "\n"
                 + "  effective view     : " + view + "\n"
                 + "  effective send     : " + view + "  (send == view in vanilla)\n"
