@@ -1,5 +1,7 @@
 # DynamicDistance
 
+[![build](https://github.com/Codetaker56/dynamicdistance/actions/workflows/build.yml/badge.svg)](https://github.com/Codetaker56/dynamicdistance/actions/workflows/build.yml)
+
 A **server-side** Fabric mod that gives every connected player their **own** view /
 chunk-send / simulation distance, independently, based on the render distance their
 client already asks for. **No client mod required** — vanilla clients work as-is.
@@ -90,6 +92,11 @@ All require permission level 2 (`op` / gamemaster tier).
 `status` reports: client-requested render distance, effective view distance, effective chunk
 send distance, effective simulation distance, whether a manual override is set, and the
 server's configured maximum/minimum.
+
+**Overrides are per session.** `set` and `simulation` overrides are held in memory and
+**reset when the player disconnects** (or when the server restarts) — the player then goes
+back to being driven by their own client render distance. There is no persistent per-player
+storage; use `reset` to clear an override early.
 
 ### Verifying different players get different distances
 

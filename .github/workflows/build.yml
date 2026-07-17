@@ -1,0 +1,53 @@
+name: build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-1_21_x:
+    name: 1.21.x (Java 21)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: gradle
+      - name: Build
+        working-directory: fabric-1.21.x
+        run: |
+          chmod +x gradlew
+          ./gradlew build --stacktrace --no-daemon
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dynamicdistance-1.21.x
+          path: fabric-1.21.x/build/libs/*.jar
+          if-no-files-found: error
+
+  build-26_x:
+    name: 26.x (Java 25)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: gradle
+      - name: Build
+        working-directory: fabric-26.x
+        run: |
+          chmod +x gradlew
+          ./gradlew build --stacktrace --no-daemon
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dynamicdistance-26.x
+          path: fabric-26.x/build/libs/*.jar
+          if-no-files-found: error

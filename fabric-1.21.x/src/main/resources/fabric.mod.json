@@ -4,11 +4,11 @@
   "version": "${version}",
   "name": "DynamicDistance",
   "description": "Per-player view, chunk-send and simulation distance. Each player gets exactly what their client asks for (clamped to a configurable window), no client mod required.",
-  "authors": ["you"],
+  "authors": ["Codetaker56"],
   "license": "MIT",
   "environment": "server",
   "entrypoints": {
-    "main": ["com.example.dynamicdistance.DynamicDistance"]
+    "main": ["io.github.codetaker56.dynamicdistance.DynamicDistance"]
   },
   "mixins": [
     "dynamicdistance.mixins.json"
