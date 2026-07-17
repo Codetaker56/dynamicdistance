@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.example.dynamicdistance.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "server": [
+    "ChunkMapMixin",
+    "DistanceManagerMixin",
+    "ServerPlayerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

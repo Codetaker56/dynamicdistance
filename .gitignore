@@ -1,0 +1,27 @@
+# Gradle
+.gradle/
+build/
+
+# Fabric Loom / Minecraft dev
+run/
+.fabric/
+remappedSrc/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+bin/
+out/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# NOTE: gradle/wrapper/gradle-wrapper.jar is intentionally committed -
+# the wrapper is required to build without a global Gradle install.
